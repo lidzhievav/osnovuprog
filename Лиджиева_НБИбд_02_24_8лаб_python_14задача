@@ -1,0 +1,68 @@
+def min_column_product(matrix):
+  """
+  Находит номер столбца с наименьшим произведением элементов и само произведение.
+
+  Args:
+    matrix: Список списков (матрица).
+
+  Returns:
+    Кортеж (номер_столбца, минимальное_произведение). 
+    Возвращает (None, None), если матрица пуста или содержит пустые строки.
+  """
+
+  m = len(matrix)
+  if m == 0:  
+    return None, None
+
+  n = len(matrix[0])
+  if n == 0:
+      return None, None
+
+  min_product = float('inf')  
+  min_column_index = -1
+
+
+  for j in range(n):
+    product = 1
+    for i in range(m):
+      product *= matrix[i][j]
+
+    if product < min_product:
+      min_product = product
+      min_column_index = j
+
+  return min_column_index, min_product
+
+
+# Пример использования:
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+column_index, min_prod = min_column_product(matrix)
+
+if column_index is not None:
+  print(f"Столбец с наименьшим произведением: {column_index + 1}") # +1, так как индексы начинаются с 0
+  print(f"Минимальное произведение: {min_prod}")
+else:
+  print("Матрица пуста или содержит пустые строки.")
+
+
+matrix2 = [] 
+column_index, min_prod = min_column_product(matrix2)
+if column_index is not None:
+  print(f"Столбец с наименьшим произведением: {column_index + 1}")
+  print(f"Минимальное произведение: {min_prod}")
+else:
+  print("Матрица пуста или содержит пустые строки.")
+
+
+matrix3 = [[1,2],[3]] 
+column_index, min_prod = min_column_product(matrix3)
+if column_index is not None:
+  print(f"Столбец с наименьшим произведением: {column_index + 1}")
+  print(f"Минимальное произведение: {min_prod}")
+else:
+  print("Матрица пуста или содержит пустые строки.")
