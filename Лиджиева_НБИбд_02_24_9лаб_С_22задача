@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+  int n;
+  printf("Введите натуральное число n: ");
+  scanf("%d", &n);
+
+  if (n <= 0) {
+    printf("n должно быть натуральным числом.\n");
+    return 1; 
+  }
+
+  int count = 0;
+  for (int x = 1; x * x < n; ++x) {
+    for (int y = 1; x * x + y * y < n; ++y) {
+      count++;
+    }
+  }
+
+  printf("Количество решений неравенства x^2 + y^2 < %d в натуральных числах: %d\n", n, count);
+  return 0;
+}
