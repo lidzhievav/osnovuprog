@@ -1,0 +1,38 @@
+import math
+
+def find_farthest_points(points):
+    """
+    Находит пару точек с наибольшим расстоянием.
+
+    Args:
+        points: Список кортежей, где каждый кортеж содержит координаты точки (x, y).
+
+    Returns:
+        Кортеж (index1, index2), индексы точек с максимальным расстоянием. 
+        Возвращает None, если в списке меньше двух точек.
+    """
+    n = len(points)
+    if n < 2:
+        return None
+
+    max_distance = 0
+    farthest_pair = (0, 1)  
+
+    for i in range(n):
+        for j in range(i + 1, n):  
+            distance = math.dist(points[i], points[j])  
+            if distance > max_distance:
+                max_distance = distance
+                farthest_pair = (i, j)
+
+    return farthest_pair
+
+
+# Пример использования:
+points = [(1, 2), (3, 4), (5, 6), (7,8), (9,10)]
+farthest = find_farthest_points(points)
+
+if farthest:
+    print(f"Точки с наибольшим расстоянием: {farthest[0] + 1}, {farthest[1] + 1}")  # +1, т.к. индексы начинаются с 0
+else:
+    print("В списке меньше двух точек.")
