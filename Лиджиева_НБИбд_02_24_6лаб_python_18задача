@@ -1,0 +1,34 @@
+import math
+
+def count_points_in_circle(n, r, a, b):
+    """Подсчитывает количество точек внутри круга с помощью цикла while."""
+    count = 0
+    i = 0
+    while i < n:
+        try:
+            x = float(input(f"Введите координату x для точки {i+1}: "))
+            y = float(input(f"Введите координату y для точки {i+1}: "))
+            distance = math.sqrt((x - a)**2 + (y - b)**2)
+            if distance <= r:
+                count += 1
+        except ValueError:
+            print("Неверный ввод. Введите числа.")
+        i += 1
+    return count
+
+
+if __name__ == "__main__":
+    try:
+        n = int(input("Введите количество точек: "))
+        r = float(input("Введите радиус круга: "))
+        a = float(input("Введите координату x центра: "))
+        b = float(input("Введите координату y центра: "))
+
+        if n <= 0 or r <= 0:
+            print("Ошибка: Количество точек и радиус должны быть положительными.")
+        else:
+            result = count_points_in_circle(n, r, a, b)
+            print(f"Количество точек внутри круга: {result}")
+
+    except ValueError:
+        print("Неверный ввод. Введите только числа.")
