@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <float.h> 
+
+int main() {
+  double a, b, h = 0.1;
+  double min_y = DBL_MAX; 
+  double max_y = DBL_MIN; 
+
+  printf("Введите начало интервала a: ");
+  if (scanf("%lf", &a) != 1) {
+    printf("Ошибка ввода.\n");
+    return 1;
+  }
+  printf("Введите конец интервала b: ");
+  if (scanf("%lf", &b) != 1) {
+    printf("Ошибка ввода.\n");
+    return 1;
+  }
+
+  if (a >= b) {
+    printf("Ошибка: a должно быть меньше b.\n");
+    return 1;
+  }
+
+  for (double x = a; x <= b; x += h) {
+    double y = 3 * x * x + x - 4;
+    if (y < min_y) {
+      min_y = y;
+    }
+    if (y > max_y) {
+      max_y = y;
+    }
+  }
+
+  printf("Наименьшее значение функции y: %.2lf\n", min_y);
+  printf("Наибольшее значение функции y: %.2lf\n", max_y);
+
+  return 0;
+}
