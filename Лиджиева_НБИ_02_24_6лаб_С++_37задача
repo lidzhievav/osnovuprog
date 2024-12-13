@@ -1,0 +1,27 @@
+#include <iostream>
+#include <iomanip> 
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Введите натуральное число n: ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Ошибка: n должно быть натуральным числом." << endl;
+        return 1;
+    }
+
+    double a = 1.0; 
+    int k = 2; 
+
+    while (k <= n) {
+        a = a / k + k;
+        k++;
+    }
+
+    cout << "an = " << fixed << setprecision(10) << a << endl; 
+
+    return 0;
+}
