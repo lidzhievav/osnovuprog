@@ -1,0 +1,28 @@
+def is_perfect(number):
+    """Checks if a number is perfect."""
+    if number <= 1:
+        return False
+    sum_of_divisors = 1  
+    for i in range(2, int(number**0.5) + 1):
+        if number % i == 0:
+            sum_of_divisors += i
+            if i * i != number:  
+                sum_of_divisors += number // i
+    return sum_of_divisors == number
+
+
+def find_perfect_numbers(limit):
+    """Finds all perfect numbers up to a given limit."""
+    perfect_numbers = []
+    num = 1
+    while num <= limit:
+        if is_perfect(num):
+            perfect_numbers.append(num)
+        num += 1
+    return perfect_numbers
+
+
+if __name__ == "__main__":
+    limit = 1000
+    perfect_numbers = find_perfect_numbers(limit)
+    print(f"Совершенные числа в интервале [1, {limit}]: {perfect_numbers}")
