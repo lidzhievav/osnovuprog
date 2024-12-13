@@ -1,0 +1,11 @@
+def find_numbers_with_remainder():
+    """Finds and prints numbers between 35 and 87 (inclusive) 
+       that leave a remainder of 1, 2, or 5 when divided by 7.
+    """
+    for num in range(35, 88):  
+        if num % 7 in [1, 2, 5]:
+            print(num)
+
+
+if __name__ == "__main__":
+    find_numbers_with_remainder()
