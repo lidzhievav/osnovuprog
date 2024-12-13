@@ -1,0 +1,42 @@
+def closest_sum(R, arr):
+  """
+  Находит два различных элемента массива, сумма которых наиболее близка к числу R.
+
+  Args:
+    R: Целое число.
+    arr: Массив целых чисел.
+
+  Returns:
+    Кортеж из двух элементов (a, b), где a и b - элементы массива, 
+    сумма которых наиболее близка к R,  отсортированные по возрастанию индексов.
+    Возвращает None, если в массиве меньше двух элементов.
+  """
+
+  n = len(arr)
+  if n < 2:
+    return None
+
+  min_diff = float('inf')  
+  best_pair = None
+
+  for i in range(n):
+    for j in range(i + 1, n): 
+      current_sum = arr[i] + arr[j]
+      diff = abs(current_sum - R)
+      if diff < min_diff:
+        min_diff = diff
+        best_pair = (arr[i], arr[j])
+
+  return best_pair
+
+
+# Пример использования:
+R = 10
+numbers = [1, 5, 2, 7, 3]
+
+result = closest_sum(R, numbers)
+
+if result:
+  print(f"Два элемента, сумма которых ближе всего к {R}: {result[0]}, {result[1]}")
+else:
+  print("В массиве меньше двух элементов.")
