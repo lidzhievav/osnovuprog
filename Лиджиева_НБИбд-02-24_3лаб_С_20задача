@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+  int last_digit;
+
+  printf("Введите последнюю цифру числа: ");
+  if (scanf("%d", &last_digit) != 1) {
+    printf("Ошибка ввода. Введите целое число.\n");
+    return 1; 
+  }
+
+  
+  if (last_digit < 0 || last_digit > 9) {
+    printf("Ошибка: Введите однозначное число (0-9).\n");
+    return 1;
+  }
+
+  int last_digit_squared = (last_digit * last_digit) % 10; 
+
+  printf("Последняя цифра квадрата: %d\n", last_digit_squared);
+
+  return 0;
+}
