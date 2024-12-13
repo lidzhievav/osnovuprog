@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+  double side;
+
+  printf("Введите длину стороны равностороннего треугольника: ");
+  scanf("%lf", &side);
+
+  if (side <= 0) {
+    printf("Длина стороны должна быть положительной.\n");
+    return 1;
+  }
+
+  double area = (side * side * sqrt(3)) / 4; // формула площади
+  double inradius = (side * sqrt(3)) / 6;   // радиус вписанной окружности
+  double circumradius = (side * sqrt(3)) / 3; // радиус описанной окружности
+
+
+  printf("Площадь треугольника: %.2lf\n", area);
+  printf("Радиус вписанной окружности: %.2lf\n", inradius);
+  printf("Радиус описанной окружности: %.2lf\n", circumradius);
+  printf("Радиус вписанной окружности (повтор): %.2lf\n", inradius); // повтор для ясности
+
+  return 0;
+}
