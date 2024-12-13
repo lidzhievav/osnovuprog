@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+#include <limits> 
+
+using namespace std;
+
+int main() {
+  int m, n;
+  cin >> m >> n;
+
+  vector<vector<int>> matrix(m, vector<int>(n));
+  for (int i = 0; i < m; ++i) {
+    for (int j = 0; j < n; ++j) {
+      cin >> matrix[i][j];
+    }
+  }
+
+  int result = 0; 
+  bool found = false;
+
+  for (int i = 0; i < m; ++i) {
+    int max_in_row = numeric_limits<int>::min(); 
+    int max_index_in_row = -1;
+
+    for (int j = 0; j < n; ++j) {
+      if (matrix[i][j] > max_in_row) {
+        max_in_row = matrix[i][j];
+        max_index_in_row = j;
+      }
+    }
+
+    bool is_min_in_col = true;
+    for (int k = 0; k < m; ++k) {
+      if (matrix[k][max_index_in_row] < max_in_row) {
+        is_min_in_col = false;
+        break;
+      }
+    }
+
+    if (is_min_in_col) {
+      result = max_in_row;
+      found = true;
+      break; 
+    }
+  }
+
+  if (found) {
+    cout << result << endl;
+  } else {
+    cout << 0 << endl;
+  }
+
+  return 0;
+}
