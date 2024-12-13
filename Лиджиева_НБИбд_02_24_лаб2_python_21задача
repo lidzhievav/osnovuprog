@@ -1,0 +1,25 @@
+def passes_through_origin(A, B, C):
+  """Checks if a line passes through the origin (0, 0).
+
+  Args:
+    A, B, C: Coefficients of the line equation Ax + By + C = 0.
+
+  Returns:
+    True if the line passes through the origin, False otherwise.
+  """
+  return A * 0 + B * 0 + C == 0
+
+
+if __name__ == "__main__":
+  try:
+    A = float(input("Enter the coefficient A: "))
+    B = float(input("Enter the coefficient B: "))
+    C = float(input("Enter the coefficient C: "))
+
+    if passes_through_origin(A, B, C):
+      print("The line passes through the origin.")
+    else:
+      print("The line does not pass through the origin.")
+
+  except ValueError:
+    print("Invalid input. Please enter numbers for A, B, and C.")
