@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Введите количество элементов в массиве: ");
+    if (scanf("%d", &n) != 1 || n <= 0) {
+        printf("Ошибка ввода. Количество элементов должно быть положительным числом.\n");
+        return 1;
+    }
+
+    int arr[n];
+    printf("Введите элементы массива:\n");
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &arr[i]) != 1) {
+            printf("Ошибка ввода. Введите целое число.\n");
+            return 1;
+        }
+    }
+
+    long long sum = 0; 
+    for (int i = 1; i < n; i += 2) {
+        sum += arr[i];
+    }
+
+    printf("Сумма элементов на четных местах: %lld\n", sum);
+    return 0;
+}
